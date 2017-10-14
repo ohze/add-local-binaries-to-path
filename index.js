@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
-const shells = require('shells')();
+const os = require('os');
+const exists = require('path-exists').sync;
+let shells = require('shells')();
 const binDir = './node_modules/.bin';
 const comment = `# added by \`npm i local-bin-path\``;
 
@@ -73,10 +75,6 @@ if (!shells.length && os.platform() === "win32") {
 If you use IntelliJ/ WebStorm/..., pls goto:
 Settings > Tools > Terminal
 and set 'Shell path' to 'C:\\Program Files\\Git\\bin\\sh.exe'`);
-
-    const os = require('os');
-    const exists = require('path-exists').sync;
-
     const bashrc = os.homedir() + "/.bashrc";
     if (!exists(bashrc)) {
         fs.openSync(bashrc, "w");
@@ -87,7 +85,7 @@ and set 'Shell path' to 'C:\\Program Files\\Git\\bin\\sh.exe'`);
 test -f ~/.bashrc && . ~/.bashrc`)
         }
     }
-    shells = [{type: bash, file: bashrc}];
+    shells = [{type: "bash", file: bashrc}];
 }
 
 if (!shells.length) {
