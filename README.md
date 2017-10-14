@@ -1,4 +1,4 @@
-# add-local-binaries-to-path
+# local-bin-path
 
 Never type `./node_modules/.bin` again!
 
@@ -18,7 +18,12 @@ installed globally.
 ## Installation
 
 ```sh
-npm i -g add-local-binaries-to-path
+npm i local-bin-path
+```
+
+## Uninstall
+```sh
+npm uninstall local-bin-path
 ```
 
 A postinstall task looks for these files:
@@ -36,13 +41,13 @@ For each shell configuration file found, a string is injected into the file
  For bash and zsh, it looks like this:
 
  ```sh
- export PATH="$PATH:./node_modules/.bin"
+ export PATH="./node_modules/.bin:$PATH"
  ```
 
  For fish, this:
 
  ```fish
- set -gx PATH $PATH ./node_modules/.bin
+ set -gx PATH ./node_modules/.bin $PATH
  ```
 
 ## Usage
