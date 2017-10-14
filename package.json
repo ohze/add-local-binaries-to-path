@@ -1,11 +1,11 @@
 {
   "name": "local-bin-path",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Never type ./node_modules/.bin again! Make locally-installed node modules executable by name by adding ./node_modules/.bin to the $PATH",
   "main": "index.js",
   "scripts": {
     "postinstall": "node index.js install",
-    "preuninstall": "node $NODE_DEBUG_OPTION index.js uninstall"
+    "preuninstall": "node index.js uninstall"
   },
   "repository": "https://github.com/ohze/local-bin-path",
   "keywords": [

@@ -68,8 +68,30 @@ function uninstall(shell) {
     logDone();
 }
 
+if (!shells.length && os.platform() === "win32") {
+    console.log(`Note: On Windows, you should use git bash, not command prompt
+If you use IntelliJ/ WebStorm/..., pls goto:
+Settings > Tools > Terminal
+and set 'Shell path' to 'C:\\Program Files\\Git\\bin\\sh.exe'`);
+
+    const os = require('os');
+    const exists = require('path-exists').sync;
+
+    const bashrc = os.homedir() + "/.bashrc";
+    if (!exists(bashrc)) {
+        fs.openSync(bashrc, "w");
+        const bashProfile = os.homedir() + "/.bash_profile";
+        if(!exists(bashProfile)) {
+            fs.appendFileSync(bashProfile,
+`test -f ~/.profile && . ~/.profile
+test -f ~/.bashrc && . ~/.bashrc`)
+        }
+    }
+    shells = [{type: bash, file: bashrc}];
+}
+
 if (!shells.length) {
-    console.error("Could not find any config files for bash, fish, or zsh! If you are on Windows, Pls using git bash");
+    console.error("Could not find any config files for bash, fish, or zsh!");
 } else if (process.argv.length < 2 || !["install", "uninstall"].includes(process.argv[2])) {
   console.log('Usage: node index.js install | uninstall');
   process.exit(1);

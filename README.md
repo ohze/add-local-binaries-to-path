@@ -7,6 +7,11 @@ Make locally-installed node modules executable by name by adding
 
 Works for bash, fish, and zsh.
 
+Note: On Windows, you should use git bash, not command prompt
+If you use IntelliJ/ WebStorm/..., pls goto:
+`Settings > Tools > Terminal`
+and set `Shell path` to `C:\Program Files\Git\bin\sh.exe`
+
 ## Why?
 
 The goal of this is to avoid "works on my machine" problems.
