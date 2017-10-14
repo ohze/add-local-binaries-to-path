@@ -1,13 +1,13 @@
 {
-  "name": "add-local-binaries-to-path",
-  "version": "1.1.3",
+  "name": "local-bin-path",
+  "version": "2.0.0",
   "description": "Never type ./node_modules/.bin again! Make locally-installed node modules executable by name by adding ./node_modules/.bin to the $PATH",
   "main": "index.js",
-  "preferGlobal": true,
   "scripts": {
-    "postinstall": "node index.js"
+    "postinstall": "node index.js install",
+    "preuninstall": "node $NODE_DEBUG_OPTION index.js uninstall"
   },
-  "repository": "https://github.com/zeke/add-local-binaries-to-path",
+  "repository": "https://github.com/ohze/local-bin-path",
   "keywords": [
     "npm",
     "node",
@@ -21,11 +21,14 @@
     "exec"
   ],
   "author": "Zeke Sikelianos <zeke@sikelianos.com> (http://zeke.sikelianos.com)",
+  "contributors": [
+    "Bùi Việt Thành <thanhbv@sandinh.net>(https://sandinh.com)"
+  ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/zeke/add-local-binaries-to-path/issues"
+    "url": "https://github.com/ohze/local-bin-path/issues"
   },
-  "homepage": "https://github.com/zeke/add-local-binaries-to-path#readme",
+  "homepage": "https://github.com/ohze/local-bin-path#readme",
   "dependencies": {
     "shells": "^2.0.0"
   }
