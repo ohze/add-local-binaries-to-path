@@ -7,8 +7,8 @@ const comment = `# added by \`npm i local-bin-path\``;
 
 function linesToAdd(shell) {
     const cmd = (shell.type === 'fish')
-        ? `set -gx PATH ${binDir} \$PATH`
-        : `export PATH="${binDir}:$PATH"`;
+        ? `set -gx PATH $PATH ${binDir}`
+        : `export PATH=$\{PATH\}:${binDir}`;
     return `${comment}\n${cmd}`;
 }
 

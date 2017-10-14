@@ -41,13 +41,13 @@ For each shell configuration file found, a string is injected into the file
  For bash and zsh, it looks like this:
 
  ```sh
- export PATH="./node_modules/.bin:$PATH"
+ export PATH=${PATH}:./node_modules/.bin
  ```
 
  For fish, this:
 
  ```fish
- set -gx PATH ./node_modules/.bin $PATH
+ set -gx PATH $PATH ./node_modules/.bin
  ```
 
 ## Usage
